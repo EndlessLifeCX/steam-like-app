@@ -1,0 +1,17 @@
+language: node_js
+
+node_js:
+- "14"
+
+before_install:
+- npm install -g @angular/cli
+install: npm install 
+
+branches:
+  only:
+  - master 
+
+deploy:
+  provider: heroku
+  app: steam-like-app
+  api_key: "9658afec-cac9-4930-ad83-cca4cb564c63"
