@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "f73186a9-f736-471c-9568-f85ad3186f74"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -15,7 +18,7 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "steam",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
