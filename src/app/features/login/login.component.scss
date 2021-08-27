@@ -1,0 +1,34 @@
+.login__container{
+    display: flex;
+    flex-direction: column  ;
+    height: inherit;
+    align-items:center;
+    justify-content:space-around;
+    background-color: aqua;
+}
+:host{
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+form {
+    width: 400px;
+    border: 0.5px solid #000;
+    border-radius: 4px;
+    margin: auto;
+    padding: 8px;
+  }
+  input, button {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    min-width: 0;
+    margin-bottom: 8px;
+  }
+  button {
+    text-align: center;
+  }
+  button:last-child {
+    margin-bottom: 0;
+  }

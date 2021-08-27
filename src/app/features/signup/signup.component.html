@@ -1,0 +1,9 @@
+ 
+ <div class='login__container'>
+    <form *ngIf="signUpForm" [formGroup]="signUpForm" (ngSubmit)="signUp()">
+   <input type="text" placeholder="Login" formControlName="login">
+   <input type="text" placeholder="Password" formControlName="password">
+<button type="submit"  [disabled]="!signUpForm.valid" >Login</button>
+
+</form>
+</div>

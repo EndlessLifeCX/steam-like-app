@@ -4,4 +4,5 @@ export interface Account
     email:string,
     userName:string,
     age:number,
+    library: any,
 }

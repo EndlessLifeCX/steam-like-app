@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "steam-api-539e2": {
+      "hosting": {
+        "steamApp": [
+          "steam-api-539e2"
+        ]
+      }
+    }
+  }
+}
