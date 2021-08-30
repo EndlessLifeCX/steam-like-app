@@ -21,32 +21,27 @@ export class AuthenticationService {
   }
 
   /* Sign up */
-  SignUp(email: string, password: string) {
+  SignUp(email: string, password: string, age:number, username:string) {
     this.angularFireAuth
       .createUserWithEmailAndPassword(email, password)
-      .then(async (res) => {
+      .then((res) => {
         console.log('Successfully signed up!', res);
         const uid =  res.user?.uid
         if(uid){
-            console.log(uid)
-        this.firestore.firestore.collection('users').doc(uid).set({
-            age:0,
+          console.log(uid)
+          this.firestore.firestore.collection('users').doc(uid).set({
+            age:age,
             email:res.user?.email,
-            username:'korelian',
-        }).then((wa)=>{
-          
-            console.log('doc written with id:', wa, "uid: ",uid)
-        }).then(()=>
-        this.firestore.collection('users').doc(uid).collection('library').add({}))
-        .then((res)=>
-        this.router.navigateByUrl('/mainPage')
-        ).catch(err=>console.log('err:', err))
-        
-            
+            username:username,
+            library:{}
+        })
+        .then(()=>{
+          this.router.navigateByUrl('/mainPage')
+
+        })
+        .catch(err=>console.log('err:', err))
         }
-        else{
-            console.log('smth went wrong')
-        }
+
       })
       .catch((error) => {
         console.log('Something is wrong:', error.message);

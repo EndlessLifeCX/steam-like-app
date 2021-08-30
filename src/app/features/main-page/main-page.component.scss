@@ -1,0 +1,21 @@
+.game{
+    &__card{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin: 0 2em;
+    min-width: 200px;
+    text-align: end;
+        &__heading{
+            padding-right: 5px;
+            background-color: aliceblue;
+        }
+}
+    &__container{
+        display: flex;
+    }
+}
+:host{
+    text-align: center;
+}

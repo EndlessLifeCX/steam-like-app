@@ -6,5 +6,11 @@
 <!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
 <!-- * * * * * * * to get started with your project! * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<router-outlet>
+<nav *ngIf='isLogged'>
+    <a routerLink="/mainPage"  routerLinkActive="active">Home</a>
+    <a routerLink="/mainPage"  routerLinkActive="active">Library</a>
+    <a routerLink="/mainPage"  routerLinkActive="active">Friends</a>
+    <a routerLink="/profile"  routerLinkActive="active">Profile</a></nav>
+<router-outlet  (activate)="isLoggedIn()">
+
 </router-outlet>

@@ -1,8 +1,6 @@
 export interface Account 
 {
-    id:number,
     email:string,
-    userName:string,
+    username:string,
     age:number,
-    library: any,
 }

@@ -1,2 +1,16 @@
-<p>main-page works!</p>
+<h1>Games</h1>
+<div class="game__container">
+<div class="game__card" *ngFor='let game of games | async'>
+    <div class="game__card__heading"> 
+        <h2>{{game.gameTitle}}</h2>
+        <h2>{{game.cost}} uah</h2>
+    </div>
+    <div>
+        <p>{{game.gameTags}}</p>
+        <p>{{game.description}}</p>
+    </div>
+   
+   
+ </div>
+</div>
 <button  (click)='signOut()'>signOut</button>

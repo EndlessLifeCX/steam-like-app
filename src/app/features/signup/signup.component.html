@@ -1,9 +1,11 @@
  
  <div class='login__container'>
     <form *ngIf="signUpForm" [formGroup]="signUpForm" (ngSubmit)="signUp()">
-   <input type="text" placeholder="Login" formControlName="login">
+   <input type="text" placeholder="Age" formControlName="age">
+   <input type="text" placeholder="Username" formControlName="username">
+   <input type="text" placeholder="Email" formControlName="email">
    <input type="text" placeholder="Password" formControlName="password">
-<button type="submit"  [disabled]="!signUpForm.valid" >Login</button>
+<button type="submit"  [disabled]="!signUpForm.valid" >Signup</button>
 
 </form>
 </div>

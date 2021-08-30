@@ -16,14 +16,16 @@ export class SignupComponent implements OnInit {
 
   public ngOnInit(): void {
     this.signUpForm = new FormGroup({
-      login: new FormControl('', [Validators.required,Validators.email]),    
+      username: new FormControl('', [Validators.required,Validators.minLength(4)]), 
+      age: new FormControl('', [Validators.required,Validators.max(80)]),    
+      email: new FormControl('', [Validators.required,Validators.email]),    
       password: new FormControl('', [Validators.required, Validators.minLength(6)])
     })
   }
 
   public signUp(){
     const signUpForm = this.signUpForm.controls
-    this.authService.SignUp(signUpForm.login.value,signUpForm.password.value)
+    this.authService.SignUp(signUpForm.email.value,signUpForm.password.value,signUpForm.age.value,signUpForm.username.value)
 
     console.log(signUpForm.login.value , signUpForm.password.value)
     

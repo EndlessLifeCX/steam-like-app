@@ -10,7 +10,6 @@ import { AuthenticationService } from 'src/app/core/services/auth.service';
 export class LoginComponent implements OnInit {
   public loginForm : FormGroup;
   constructor(
-    private fb: FormBuilder,
     private readonly  authService: AuthenticationService
   ) {
     this.loginForm = new FormGroup({})
@@ -18,16 +17,13 @@ export class LoginComponent implements OnInit {
 
   public ngOnInit(): void {
     this.loginForm = new FormGroup({
-      login: new FormControl('', [Validators.required,Validators.email]),    
+      email: new FormControl('', [Validators.required,Validators.email]),    
       password: new FormControl('', [Validators.required, Validators.minLength(6)])
     })
   }
 
   public login(){
     const loginForm = this.loginForm.controls
-    this.authService.SignIn(loginForm.login.value,loginForm.password.value)
-
-    console.log(loginForm.login.value , loginForm.password.value)
-    
+    this.authService.SignIn(loginForm.email.value,loginForm.password.value)
   }
 }
