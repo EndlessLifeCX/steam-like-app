@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { AngularFirestore, Query } from '@angular/fire/firestore';
+import { Observable, of, SchedulerLike } from 'rxjs';
 import firebase from 'firebase';
-import { first, map ,mergeMap, withLatestFrom} from 'rxjs/operators';
+import { first, map } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Account } from '../models/account';
+import { Account, Friend } from '../models/account';
 
 
 
@@ -18,15 +18,14 @@ export class ProfileService {
     this.userData = angularFireAuth.authState;
 
   }
- 
+  public async getUserData(){
+    const userData = await this.userData.pipe( 
+      first()
+     ).toPromise();
+     return userData
+  }
   public async getAccount () {
-  const userData = await this.userData.pipe( 
- first()
-).toPromise();
-    userData?.uid
-    // console.log(userData?.uid)
-// const uid = x.subscribe(x=>x?.uid)
-// console.log(uid)
+    let userData = await this.getUserData()
      const res = this.firestore.collection('users').doc(userData?.uid).snapshotChanges()
       .pipe(map(account => ({...account.payload.data() as Account}) ),
     first(),
@@ -34,4 +33,12 @@ export class ProfileService {
   return res;
  }
 
+  public async getFriends(): Promise<Observable<Friend[]>>{
+    const userData = await this.getUserData()
+    const friends1 =   (await this.firestore.collection('friendList').ref.where('user1','==','user1').get()).docs.map(x=>x.data() as Friend)
+    const friends2 =  (await this.firestore.collection('friendList').ref.where('Requested','==','userId1').get()).docs.map(x=>x.data() as Friend)
+    const allFriends= friends1.concat(friends2)
+    const friends$ = of(allFriends)
+    return friends$
+  }
 }

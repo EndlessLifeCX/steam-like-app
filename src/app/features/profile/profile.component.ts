@@ -19,6 +19,5 @@ export class ProfileComponent implements OnInit {
   }
   public async getAccount(){
     this.account =   await this.profileService.getAccount()
-    console.log(this.account)
   }
 }

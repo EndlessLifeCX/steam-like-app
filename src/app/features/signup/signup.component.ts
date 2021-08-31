@@ -26,9 +26,6 @@ export class SignupComponent implements OnInit {
   public signUp(){
     const signUpForm = this.signUpForm.controls
     this.authService.SignUp(signUpForm.email.value,signUpForm.password.value,signUpForm.age.value,signUpForm.username.value)
-
-    console.log(signUpForm.login.value , signUpForm.password.value)
-    
   }
 
 }

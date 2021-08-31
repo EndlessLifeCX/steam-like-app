@@ -1,0 +1,24 @@
+<div class="friends-block">
+<div class="friend-search__container">
+    <label>
+        search friends
+    <input type="text" >
+    </label>
+    <button>find friend</button>
+</div>
+
+<div class="friends-list__container">
+    <h2>Your Friends</h2>
+    <ul >
+        <li *ngFor='let friend of friends | async'>
+        <div *ngIf="friend.user1 == userData.uid; then first else second"></div>
+            <ng-template #first ><div>{{friend.user1}}</div></ng-template>
+            <ng-template #second><div>{{friend.user2}}</div></ng-template>
+            <div>status: {{friend.status}}</div>
+            <button>delete friend</button>
+         </li>
+           
+
+    </ul>
+</div>
+</div>

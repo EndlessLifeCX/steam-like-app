@@ -18,7 +18,6 @@ export class MainPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllGames()
-    console.log(this.games)
   }
 
   getAllGames(){

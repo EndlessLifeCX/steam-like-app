@@ -5,6 +5,7 @@ import { MainPageComponent } from './features/main-page/main-page.component';
 import { SignupComponent } from './features/signup/signup.component';
 import { AuthGuard } from './core/services/auth.guard';
 import { ProfileComponent } from './features/profile/profile.component';
+import { FriendsComponent } from './features/friends/friends.component';
 
 const routes: Routes = [
   {
@@ -17,8 +18,9 @@ const routes: Routes = [
   { path: 'signUp', component: SignupComponent},
   { path: 'mainPage', component: MainPageComponent,
   canActivate: [AuthGuard]},
+  { path: 'friends', component: FriendsComponent,canActivate: [AuthGuard]},
   { path: 'signup', component: SignupComponent},
-  { path: 'profile', component: ProfileComponent},
+  { path: 'profile', component: ProfileComponent,canActivate: [AuthGuard]},
 
 ]
 @NgModule({

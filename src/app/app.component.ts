@@ -18,7 +18,6 @@ this.isLogged=false
   }
   async isLoggedIn(){
    const user = await this.authService.isLoggedIn()
-  console.log('waa')
   if(user){
     this. isLogged=true;
   }

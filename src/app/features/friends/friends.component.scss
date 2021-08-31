@@ -1,0 +1,52 @@
+input,label{
+    display: block  ;
+    min-width:200px;
+}
+
+label{
+    text-align: center;
+}
+.friend-search__container{
+    button{
+        min-width: 60px;
+        max-height:30px;
+        margin-top: 15px;
+        align-self:center;
+    }
+    width: 320px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-evenly
+}
+.friends-list{
+    &__container{
+        ul li{
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            align-self: flex-start;
+            justify-content: flex-start;
+            div{
+                min-width:106px;
+                margin: 0 2em 0.2em 0;
+            }
+            button{
+                display: flex;
+                min-width: 40px
+            }
+        }
+        min-width: 320px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content:space-evenly
+    }
+}
+.friends-block{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

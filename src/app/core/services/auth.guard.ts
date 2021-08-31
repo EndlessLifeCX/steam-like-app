@@ -12,7 +12,6 @@ export class AuthGuard implements CanActivate {
   async canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean>{
     const user = await this.authService.isLoggedIn()
     if(user){
-      console.log(state.url)
         if(state.url === '/login')
         {this.router.navigate(['/mainPage']);
     }

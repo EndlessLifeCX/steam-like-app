@@ -28,7 +28,6 @@ export class AuthenticationService {
         console.log('Successfully signed up!', res);
         const uid =  res.user?.uid
         if(uid){
-          console.log(uid)
           this.firestore.firestore.collection('users').doc(uid).set({
             age:age,
             email:res.user?.email,
