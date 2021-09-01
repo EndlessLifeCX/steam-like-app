@@ -4,6 +4,8 @@
     <input type="text" placeholder="Email" formControlName="email">
     <input type="text" placeholder="Password" formControlName="password">
  <button type="submit"  [disabled]="!loginForm.valid" >Login</button>
+ <button type="button"  (click)="signUp()" >Signup</button>
+
 
  </form>
 </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Account, Friend, FriendStatus } from 'src/app/core/models/account';
+import { Account, Friend } from 'src/app/core/models/account';
 import { ProfileService } from 'src/app/core/services/profile.service';
 import firebase from 'firebase';
 

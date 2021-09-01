@@ -1,6 +1,6 @@
-<h1>Games</h1>
+<h1>Your games</h1>
 <div class="game__container">
-<div class="game__card" *ngFor='let game of games | async'>
+<div  class="game__card" *ngFor='let game of games'>
     <div class="game__card__heading"> 
         <h2>Title:{{game.gameTitle}}</h2>
         <hr>
@@ -10,8 +10,5 @@
         <p>Game tags: {{game.gameTags}}</p>
         <p>Description: {{game.description}}</p>
     </div>
-   
-   
- </div>
 </div>
-<button  (click)='signOut()'>signOut</button>
+</div>

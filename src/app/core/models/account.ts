@@ -12,8 +12,3 @@ export interface Friend {
 }
 
 
-export enum FriendStatus {
-  REQUESTED = 'REQUESTED',
-  ACCEPTED = 'FRIENDS',
-  DECLINED = 'DECLINED',
-}

@@ -6,6 +6,7 @@ import { SignupComponent } from './features/signup/signup.component';
 import { AuthGuard } from './core/services/auth.guard';
 import { ProfileComponent } from './features/profile/profile.component';
 import { FriendsComponent } from './features/friends/friends.component';
+import { LibraryComponent } from './features/library/library.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'mainPage', component: MainPageComponent,
   canActivate: [AuthGuard]},
   { path: 'friends', component: FriendsComponent,canActivate: [AuthGuard]},
+  { path: 'library', component: LibraryComponent,canActivate: [AuthGuard]},
   { path: 'signup', component: SignupComponent},
   { path: 'profile', component: ProfileComponent,canActivate: [AuthGuard]},
 

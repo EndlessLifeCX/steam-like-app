@@ -32,7 +32,7 @@ export class AuthenticationService {
             age:age,
             email:res.user?.email,
             username:username,
-            library:{}
+            library:[]
         })
         .then(()=>{
           this.router.navigateByUrl('/mainPage')

@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ɵɵsetComponentScope } from '@angular/core';
 import { AngularFirestore, Query } from '@angular/fire/firestore';
 import { Observable, of, SchedulerLike } from 'rxjs';
 import firebase from 'firebase';
 import { first, map } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Account, Friend } from '../models/account';
+import { Game } from '../models/game';
 
 
 
@@ -19,6 +20,7 @@ export class ProfileService {
 
   }
   public async getUserData(){
+     this.userData.subscribe(x=>console.log(x?.uid))
     const userData = await this.userData.pipe( 
       first()
      ).toPromise();
@@ -41,4 +43,28 @@ export class ProfileService {
     const friends$ = of(allFriends)
     return friends$
   }
+
+  public async getUserLibrary(){
+    let userData = await this.getUserData()
+    const library = this.firestore.collection('users').doc(userData?.uid).snapshotChanges()
+    .pipe(map(account => (account.payload.get('library')) ),
+  first(),
+ ).toPromise();
+return library;
+  }
+  public async getGamesFromLibrary(){
+    let lib = await this.getUserLibrary()
+    let gamesArr=[]
+    for(let item in lib){
+      const res = await this.firestore.collection('games').doc(lib[item]).get()
+      .pipe(map(account => ({...account.data() as Game}) ),
+      first(),
+     ).toPromise();
+     gamesArr.push(res)
+    }
+    return gamesArr
+
+  }
 }
+
+ 

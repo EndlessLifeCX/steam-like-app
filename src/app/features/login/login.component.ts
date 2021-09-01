@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/core/services/auth.service';
 
 @Component({
@@ -10,7 +11,8 @@ import { AuthenticationService } from 'src/app/core/services/auth.service';
 export class LoginComponent implements OnInit {
   public loginForm : FormGroup;
   constructor(
-    private readonly  authService: AuthenticationService
+    private readonly  authService: AuthenticationService,
+    private readonly route: Router
   ) {
     this.loginForm = new FormGroup({})
    }
@@ -20,6 +22,9 @@ export class LoginComponent implements OnInit {
       email: new FormControl('', [Validators.required,Validators.email]),    
       password: new FormControl('', [Validators.required, Validators.minLength(6)])
     })
+  }
+  public signUp(){
+    this.route.navigateByUrl('signup')
   }
 
   public login(){

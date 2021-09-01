@@ -8,6 +8,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { SignupComponent } from './signup/signup.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FriendsComponent } from './friends/friends.component';
+import { LibraryComponent } from './library/library.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { FriendsComponent } from './friends/friends.component';
     MainPageComponent,
     SignupComponent,
     ProfileComponent,
-    FriendsComponent
+    FriendsComponent,
+    LibraryComponent
   ],
   imports: [
     CommonModule,
