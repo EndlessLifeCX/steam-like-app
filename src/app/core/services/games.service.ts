@@ -44,4 +44,4 @@ export class GamesService {
       }).then(()=>console.log('succes')).catch(err=>console.log(err))
     })
   }
-}
+} 

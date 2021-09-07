@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Account } from 'src/app/core/models/account';
 import { Game } from 'src/app/core/models/game';
 import { ProfileService } from 'src/app/core/services/profile.service';
 

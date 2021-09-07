@@ -1,6 +1,6 @@
-import { Injectable, ɵɵsetComponentScope } from '@angular/core';
-import { AngularFirestore, Query } from '@angular/fire/firestore';
-import { Observable, of, SchedulerLike } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable, of } from 'rxjs';
 import firebase from 'firebase';
 import { first, map } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';

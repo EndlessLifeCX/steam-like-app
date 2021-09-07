@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DocumentChangeAction } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Game } from 'src/app/core/models/game';
 import { AuthenticationService } from 'src/app/core/services/auth.service';
