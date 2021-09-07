@@ -1,9 +1,8 @@
 <div class=profile__container >
-   <input value="{{account.username }}">
-   <input value="{{account.email }}">
-
-   <input value="{{account.age}}">
-
-
-    <button>change Data</button>
+    <form *ngIf="accountForm" [formGroup]="accountForm" class='profile__form' (submit)='changeAccData()'>
+   <input type="text" formControlName="username" value="{{account.username}}">
+   <input type="text" formControlName="email" value="{{account.email}}">
+   <input type="text" formControlName="age" value="{{account.age}}">
+   <button type="submit" [disabled]="!accountForm.valid">change Data</button>
+</form>
 </div>

@@ -6,6 +6,7 @@
     justify-content: center;
   }
   .profile{
+      &__form,
       &__container{
           display: flex;
           flex-direction: column;

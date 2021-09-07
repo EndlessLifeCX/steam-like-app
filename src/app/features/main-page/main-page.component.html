@@ -1,6 +1,6 @@
 <h1>Games</h1>
 <div class="game__container">
-<div class="game__card" *ngFor='let game of games | async'>
+<div id='{{game.id}}' class="game__card" *ngFor='let game of games | async'>
     <div class="game__card__heading"> 
         <h2>Title:{{game.gameTitle}}</h2>
         <hr>
@@ -11,7 +11,7 @@
         <p>Description: {{game.description}}</p>
     </div>
    
-   
+   <button type="button" (click)='addGame(game.id)'>Add game</button>
  </div>
 </div>
 <button  (click)='signOut()'>signOut</button>

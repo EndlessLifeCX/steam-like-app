@@ -10,7 +10,9 @@ import firebase from 'firebase';
   styleUrls: ['./friends.component.scss']
 })
 export class FriendsComponent implements OnInit {
-  friends!: Observable<Friend[]>;
+  userString!:string
+  searchedFriends!: Account[];
+  friends!:Friend[];
   userData:any
   constructor(private profileSerivce: ProfileService,) { 
   }
@@ -20,10 +22,27 @@ export class FriendsComponent implements OnInit {
     this.getUserData()
   }
   public async getFriends(){
-    this.friends =  await this.profileSerivce.getFriends()
+    this.friends =  await (await this.profileSerivce.getFriends()).toPromise()
   }
   public async getUserData(){
    this.userData = await this.profileSerivce.getUserData()
+  }
+  public async searchFriends(str:string){
+   const friends =  await (await this.profileSerivce.searchFriends(str||'')).toPromise()
+   const userData = await this.profileSerivce.getAccount()
+   this.searchedFriends = friends.filter((a:Account)=>{
+     const lol = [...this.friends]
+     let res: string[] =[];
+      lol.map(obj=>{
+       let currUser = userData.username
+       currUser==obj.user1 || currUser==obj.user2? res.push(obj.user1) && res.push(obj.user2):''
+     });
+ 
+    return !res.includes(a.username) 
+    })
+   console.log(this.searchedFriends)
+   
+
   }
 
 }

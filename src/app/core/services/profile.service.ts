@@ -20,7 +20,6 @@ export class ProfileService {
 
   }
   public async getUserData(){
-     this.userData.subscribe(x=>console.log(x?.uid))
     const userData = await this.userData.pipe( 
       first()
      ).toPromise();
@@ -35,15 +34,30 @@ export class ProfileService {
   return res;
  }
 
+  public async searchFriends(name:string):Promise<Observable<any>>{
+    const friends =  (await this.firestore.collection('users').ref.where('username', '>=', name).where('username', '<=', name + '\uf8ff').get()).docs.map(x=>x.data() );
+    const friends$ = of(friends)
+    return friends$
+  }
   public async getFriends(): Promise<Observable<Friend[]>>{
-    const userData = await this.getUserData()
-    const friends1 =   (await this.firestore.collection('friendList').ref.where('user1','==','user1').get()).docs.map(x=>x.data() as Friend)
-    const friends2 =  (await this.firestore.collection('friendList').ref.where('Requested','==','userId1').get()).docs.map(x=>x.data() as Friend)
+    const userData = await this.getAccount()
+    const friends1 =   (await this.firestore.collection('friendList').ref.where('user1','==',userData.username).get()).docs.map(x=>x.data() as Friend)
+    const friends2 =  (await this.firestore.collection('friendList').ref.where('user2','==', userData.username).get()).docs.map(x=>x.data() as Friend)
     const allFriends= friends1.concat(friends2)
     const friends$ = of(allFriends)
     return friends$
   }
+  public changeAccData(age:number,username:string,email:string){
+    this.userData.subscribe(async userData=>{
+    const uid = userData?.uid
+  await this.firestore.collection('users').doc(uid).update({
+      age:age,
+      username:username,
+      email:email,
+    }).then(()=>console.log('Succesfully changed')).catch(err=>console.log(err))
+  })
 
+  }
   public async getUserLibrary(){
     let userData = await this.getUserData()
     const library = this.firestore.collection('users').doc(userData?.uid).snapshotChanges()

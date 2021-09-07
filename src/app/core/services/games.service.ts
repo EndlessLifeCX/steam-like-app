@@ -37,4 +37,11 @@ export class GamesService {
 );
    return changes
   }
+  public AddGame(id:string){
+    this.userData.subscribe(user=>{
+      this.firestore.collection('users').doc(user?.uid).update({
+        library: firebase.firestore.FieldValue.arrayUnion(id)
+      }).then(()=>console.log('succes')).catch(err=>console.log(err))
+    })
+  }
 }

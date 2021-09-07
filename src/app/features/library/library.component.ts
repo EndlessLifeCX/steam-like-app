@@ -22,8 +22,5 @@ export class LibraryComponent implements OnInit {
   public async getLibGames(){
   this.games = await this.profileSerivce.getGamesFromLibrary()
   }
-//  public async getLib(){
-//    this.library = await this.profileSerivce.getUserLibrary()
-//   }
-
+ 
 }

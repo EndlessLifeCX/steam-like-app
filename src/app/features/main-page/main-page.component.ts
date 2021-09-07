@@ -26,5 +26,8 @@ export class MainPageComponent implements OnInit {
   signOut(){
     this.authService.SignOut()
   }
+  addGame(id:string){
+    this.gamesService.AddGame(id)
 
+  }
 }
