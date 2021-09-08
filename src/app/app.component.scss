@@ -5,6 +5,9 @@ nav{
 nav {
     background-color: #333;
     overflow: hidden;
+    :last-child{
+      background-color: rgb(95, 62, 62);
+    }
   }
   
   /* Style the links inside the navigation bar */
@@ -15,6 +18,7 @@ nav {
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
+   
   }
   
   /* Change the color of links on hover */

@@ -21,4 +21,7 @@ export class LibraryComponent implements OnInit {
   this.games = await this.profileSerivce.getGamesFromLibrary()
   }
  
+  public shareGame(id:string){
+    navigator.clipboard.writeText(id).then().catch(e => console.error(e));
+  }
 }

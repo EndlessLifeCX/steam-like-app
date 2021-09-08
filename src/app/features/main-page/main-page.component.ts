@@ -22,9 +22,7 @@ export class MainPageComponent implements OnInit {
   getAllGames(){
    this.games =  this.gamesService.getAllGames() 
   }
-  signOut(){
-    this.authService.SignOut()
-  }
+ 
   addGame(id:string){
     this.gamesService.AddGame(id)
 

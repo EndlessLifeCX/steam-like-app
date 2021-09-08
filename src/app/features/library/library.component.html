@@ -1,7 +1,7 @@
 <h1>Your games</h1>
-<div class="game__container">
-<div  class="game__card" *ngFor='let game of games'>
-    <div class="game__card__heading"> 
+<div  class="game__container">
+<div   class="game__card" *ngFor='let game of games' >
+    <div  class="game__card__heading"> 
         <h2>Title:{{game.gameTitle}}</h2>
         <hr>
         <h2>Cost: {{game.cost}} uah</h2>
@@ -10,5 +10,6 @@
         <p>Game tags: {{game.gameTags}}</p>
         <p>Description: {{game.description}}</p>
     </div>
+    <button (click)='shareGame(game.id)'>Share game</button>
 </div>
 </div>

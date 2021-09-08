@@ -6,6 +6,8 @@
    <input type="text" placeholder="Email" formControlName="email">
    <input type="text" placeholder="Password" formControlName="password">
 <button type="submit"  [disabled]="!signUpForm.valid" >Signup</button>
+<button type="button"  (click)='logIn()' >Back to Login</button>
+
 
 </form>
 </div>

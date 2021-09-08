@@ -16,6 +16,9 @@ this.isLogged=false
   ngOnInit(): void {
     this.isLoggedIn()
   }
+  signOut(){
+    this.authService.SignOut()
+  }
   async isLoggedIn(){
    const user = await this.authService.isLoggedIn()
   if(user){

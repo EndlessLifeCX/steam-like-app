@@ -71,7 +71,7 @@ return library;
     let gamesArr=[]
     for(let item in lib){
       const res = await this.firestore.collection('games').doc(lib[item]).get()
-      .pipe(map(account => ({...account.data() as Game}) ),
+      .pipe(map(account => ({...account.data()as Game, id:account.id}) ),
       first(),
      ).toPromise();
      gamesArr.push(res)

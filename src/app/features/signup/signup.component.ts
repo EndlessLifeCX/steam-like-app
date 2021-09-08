@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/core/services/auth.service';
 @Component({
   selector: 'steam-signup',
@@ -9,7 +10,8 @@ import { AuthenticationService } from 'src/app/core/services/auth.service';
 export class SignupComponent implements OnInit {
   public signUpForm : FormGroup;
   constructor(
-    private readonly  authService: AuthenticationService
+    private readonly  authService: AuthenticationService,
+    private readonly route : Router
   ) {
     this.signUpForm = new FormGroup({})
    }
@@ -27,5 +29,7 @@ export class SignupComponent implements OnInit {
     const signUpForm = this.signUpForm.controls
     this.authService.SignUp(signUpForm.email.value,signUpForm.password.value,signUpForm.age.value,signUpForm.username.value)
   }
-
+  public logIn(){
+    this.route.navigateByUrl('login')
+  }
 }
